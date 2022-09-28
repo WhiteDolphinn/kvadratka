@@ -1,6 +1,6 @@
 #include "title.h"
 #include <stdio.h>
-#include "iput.h"
+#include "ioput_function.h"
 
 static double readDouble();
 

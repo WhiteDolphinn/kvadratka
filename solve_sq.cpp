@@ -1,20 +1,20 @@
 #include "title.h"
-#include "sol_sq.h"
+#include "solve_sq.h"
 #include "equal_double.h"
 #include <math.h>
 
 
-static int sol_lin(double k, double b, double *x);
+static int solve_lin(double k, double b, double *x);
 
-int sol_sq(coeff* cf)
+int solve_sq(coeff* cf)
 {
     if (equal_double(cf->a, 0))
-        return sol_lin(cf->b, cf->c, &cf->x1);
+        return solve_lin(cf->b, cf->c, &cf->x1);
 
     if (equal_double(cf->c, 0))
     {
         cf->x2 = 0;
-        return (sol_lin(cf->a, cf->b, &cf->x1) + 1);
+        return (solve_lin(cf->a, cf->b, &cf->x1) + 1);
     }
 
     double d = (cf->b * cf->b) - 4 * cf->a * cf->c;
@@ -40,7 +40,7 @@ int sol_sq(coeff* cf)
     }
 }
 
-static int sol_lin(double k, double b, double *x)
+static int solve_lin(double k, double b, double *x)
 {
     if (k == 0 && b == 0)
         return INF_ROOTS;
