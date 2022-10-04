@@ -5,6 +5,7 @@
 int main()
 {
 
+
     coeff coef;
     input(&coef);
     coef.num = solve_sq(&coef);
