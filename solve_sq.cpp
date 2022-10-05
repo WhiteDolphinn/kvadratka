@@ -13,6 +13,9 @@ int solve_sq(coeff* cf)
 
     if (equal_double(cf->c, 0))
     {
+        if(equal_double(cf->b, 0))
+            return 1;
+
         cf->x2 = 0;
         return (solve_lin(cf->a, cf->b, &cf->x1) + 1);
     }
@@ -48,7 +51,7 @@ static int solve_lin(double k, double b, double *x)
     if (k == 0)
         return 0;
 
-    *x = b / k;
+    *x = - b / k;
 
     return 1;
 }
