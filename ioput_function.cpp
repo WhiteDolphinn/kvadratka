@@ -3,6 +3,7 @@
 #include <math.h>
 #include "equal_double.h"
 #include "ioput_function.h"
+#include <assert.h>
 
 static double readDouble();
 
@@ -84,26 +85,39 @@ static double readDouble()
 
 void output(coeff* cf)
 {
-    if (cf->num == 2)
-    {
-        printf("Number of roots: %d\n", cf->num);
-        printf("x1 = %lg\n", cf->x1);
-        printf("x2 = %lg\n", cf->x2);
-    }
+    assert(isfinite(cf->num));
+    assert(isfinite(cf->x1));
+    assert(isfinite(cf->x2));
 
-    if (cf->num == 1)
+    switch(cf->num)
     {
-        printf("Number of roots: %d\n", cf->num);
-        printf("x = %lg\n", cf->x1);
-    }
+        case 2:
+        {
+            printf("Number of roots: %d\n", cf->num);
+            printf("x1 = %lg\n", cf->x1);
+            printf("x2 = %lg\n", cf->x2);
+            break;
+        }
 
-    if (cf->num == 0)
-    {
-        printf("Number of roots: %d\n", cf->num);
-    }
+        case 1:
+        {
+            printf("Number of roots: %d\n", cf->num);
+            printf("x = %lg\n", cf->x1);
+            break;
+        }
 
-    if (cf->num == INF_ROOTS)
-    {
-        printf("Number of roots is infinitely\n");
+        case 0:
+        {
+            printf("Number of roots: %d\n", cf->num);
+            break;
+        }
+
+        case INF_ROOTS:
+        {
+            printf("Number of roots is infinitely\n");
+            break;
+        }
+        default:
+            printf("Unknown error\n");
     }
 }

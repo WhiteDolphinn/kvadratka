@@ -2,12 +2,20 @@
 #include "solve_sq.h"
 #include "equal_double.h"
 #include <math.h>
+#include <assert.h>
+#include <limits.h>
 
 
 static int solve_lin(double k, double b, double *x);
 
 int solve_sq(coeff* cf)
 {
+    assert(cf->a < (double)LLONG_MAX && cf->a > (double)LLONG_MIN);
+    assert(cf->b < (double)LLONG_MAX && cf->b > (double)LLONG_MIN);
+    assert(cf->b < (double)LLONG_MAX && cf->c > (double)LLONG_MIN);
+    assert(cf != NULL);
+
+
     if (equal_double(cf->a, 0))
         return solve_lin(cf->b, cf->c, &cf->x1);
 
@@ -45,6 +53,10 @@ int solve_sq(coeff* cf)
 
 static int solve_lin(double k, double b, double *x)
 {
+    assert(k < (double)LLONG_MAX && k > (double)LLONG_MIN);
+    assert(b < (double)LLONG_MAX && b > (double)LLONG_MIN);
+    assert(x != NULL);
+
     if (k == 0 && b == 0)
         return INF_ROOTS;
 
