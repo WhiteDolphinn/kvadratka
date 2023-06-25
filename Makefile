@@ -2,5 +2,8 @@ A=-D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-loop-optim
 #ttribute,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vp
 
 main:
-	@g++ main.cpp equal_double.cpp ioput_function.cpp solve_sq.cpp unit_test.cpp $(A) 
-                                                                                                                                    
+	@g++ main.cpp equal_double.cpp ioput_function.cpp solve_sq.cpp unit_test.cpp $(A)
+
+run:
+	@g++ main.cpp equal_double.cpp ioput_function.cpp solve_sq.cpp unit_test.cpp $(A)
+	./a.out

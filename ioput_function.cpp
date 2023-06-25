@@ -42,12 +42,12 @@ static double readDouble()
     switch(ch)
     {
 
-        case'\n':
+        case '\n':
         {
             break;
         }
 
-        case'.': case',':
+        case '.': case ',':
         {
             while(scanf("%lld", &num2) != 1)
                 break;
@@ -69,6 +69,8 @@ static double readDouble()
                         next_number = 1;
                     }
                     break;
+
+                    default:    break;
                 }
             }
 
@@ -78,8 +80,8 @@ static double readDouble()
             break;
        }
 
-    p = num1 + dnum2;
-    printf("Number, what read: %.*f \n\n", num2 ? (int)log10(num2)+1 : 0, p);
+    p = (double)num1 + dnum2;
+    printf("The number that is read: %.*f \n\n", num2 ? (int)log10(num2)+1 : 0, p);
      return p;
 }
 

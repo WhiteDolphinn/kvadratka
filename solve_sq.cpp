@@ -43,12 +43,10 @@ int solve_sq(coeff* cf)
     if (d < 0)
         return 0;
 
-    if (d == 0)
-    {
-            cf->x1 = (-cf->b) / (2 * cf->a);
+    if(equal_double(d, 0))
+        cf->x1 = (-cf->b) / (2 * cf->a);
 
-            return 1;
-    }
+    return 1;
 }
 
 static int solve_lin(double k, double b, double *x)
@@ -57,10 +55,10 @@ static int solve_lin(double k, double b, double *x)
     assert(b < (double)LLONG_MAX && b > (double)LLONG_MIN);
     assert(x != NULL);
 
-    if (k == 0 && b == 0)
+    if (equal_double(k, 0) && equal_double(b, 0))
         return INF_ROOTS;
 
-    if (k == 0)
+    if (equal_double(k, 0))
         return 0;
 
     *x = - b / k;
